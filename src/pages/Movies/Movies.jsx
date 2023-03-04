@@ -3,6 +3,7 @@ import { MoviesList } from '../../components/MovieList/MovieList';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { getMovieSearch } from '../../API/FetchApi';
 import { useSearchParams } from 'react-router-dom';
+import { Loader } from '../../Loader/Loader';
 
 const Movies = () => {
   const [movies, setMovies] = useState(null);
@@ -26,7 +27,7 @@ const Movies = () => {
   return (
     <main>
       <SearchForm onSubmit={onInputSearch} />
-
+      {onLoad && <Loader />}
       {movies && <MoviesList movies={movies} />}
     </main>
   );
