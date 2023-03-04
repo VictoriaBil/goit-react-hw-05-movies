@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ReviewsList = ({ reviews }) => {
   if (!reviews || !reviews.length) {
     return <p>No information about reviews is available</p>;
@@ -14,4 +16,14 @@ export const ReviewsList = ({ reviews }) => {
       })}
     </ul>
   );
+};
+
+ReviewsList.propTypes = {
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      author: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })
+  ),
 };

@@ -1,7 +1,7 @@
 export const PageNames = {
   homepage: '/',
   movies: 'movies',
-  moviesDetails: 'movies/:movie_id',
+  moviesDetails: 'movies/:movieId',
   cast: 'cast',
   reviews: 'reviews',
 };

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const MovieInfo = ({
   movieInfo: { poster_path, title, vote_average, genres, overview },
 }) => {
@@ -25,4 +27,12 @@ export const MovieInfo = ({
       </div>
     </div>
   );
+};
+
+MovieInfo.propTypes = {
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
+  vote_average: PropTypes.number,
+  genres: PropTypes.array,
+  overview: PropTypes.string,
 };

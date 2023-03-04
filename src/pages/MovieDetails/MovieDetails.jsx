@@ -7,17 +7,17 @@ import { getMovieDetails } from '../../API/FetchApi';
 import { Loader } from '../../Loader/Loader';
 
 const MovieDetails = () => {
-  const { movie_id } = useParams();
+  const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
-      const data = await getMovieDetails(movie_id);
+      const data = await getMovieDetails(movieId);
       setMovieDetails(data);
     };
     fetchMovieDetails();
-  }, [movie_id]);
+  }, [movieId]);
 
   return (
     <div>
