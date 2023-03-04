@@ -6,10 +6,18 @@ export const MoviesList = ({ movies }) => {
 
   return (
     <div>
-      {movies.map(({ title, id }) => {
+      {movies.map(({ poster_path, title, id }) => {
         return (
           <li key={id}>
             <Link to={`/movies/${id}`} state={{ from: location }}>
+              <img
+                src={
+                  poster_path !== null
+                    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                    : 'noPoster'
+                }
+                alt={title}
+              />
               <h1>{title}</h1>
             </Link>
           </li>

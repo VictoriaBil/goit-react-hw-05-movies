@@ -1,12 +1,13 @@
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { PageNames } from '../../router/paths';
+import {} from '../AdditionalInfo/AdditionalInfo.styled';
 
 export const AdditionalInfo = () => {
   const location = useLocation();
 
   return (
     <div>
-      <title>Additional information</title>
+      <h2>Additional information</h2>
       <ul>
         <li>
           <Link

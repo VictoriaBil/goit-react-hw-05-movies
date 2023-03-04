@@ -1,18 +1,19 @@
 import { Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { PageNames } from '../../router/paths';
 import { Loader } from '../../Loader/Loader';
+import { Container, Header, Link } from '../SharedLayout/SharedLayout.styled';
 
 export const SharedLayout = () => {
   return (
-    <div>
-      <header>
+    <Container>
+      <Header>
         <Link to={PageNames.homepage}>Home</Link>
         <Link to={PageNames.movies}>Movies</Link>
-      </header>
+      </Header>
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-    </div>
+    </Container>
   );
 };
