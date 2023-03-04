@@ -1,4 +1,7 @@
 export const CastList = ({ cast }) => {
+  if (!cast || !cast.length) {
+    return <p>No information about cast is available</p>;
+  }
   return (
     <ul>
       {cast.map(({ profile_path, cast_id, name, character }) => {
@@ -12,9 +15,11 @@ export const CastList = ({ cast }) => {
               }
               alt={name}
             />
-            <title>{name}</title>
             <div>
-              Character: <p>{character}</p>
+              <h2>{name}</h2>
+              <p>
+                Character: <p>{character}</p>
+              </p>
             </div>
           </li>
         );

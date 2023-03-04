@@ -4,7 +4,7 @@ import { MovieInfo } from '../../components/MovieInfo/MovieInfo';
 import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { getMovieDetails } from '../../API/FetchApi';
-// Loader
+import { Loader } from '../../Loader/Loader';
 
 const MovieDetails = () => {
   const { movie_id } = useParams();
@@ -25,11 +25,11 @@ const MovieDetails = () => {
         <>
           <Link to={location.state?.from ?? '/'}>Go back</Link>
           <MovieInfo movieInfo={movieDetails} />
-          <AdditionalInfo />
+          <AdditionalInfo backPath={location.state?.from ?? '/'} />
         </>
       )}
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </div>

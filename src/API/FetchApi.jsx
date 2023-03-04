@@ -10,19 +10,23 @@ export const getMovieTrending = async () => {
     );
     return response.data.results;
   } catch (error) {
-    console.error('getTrendingFilms error' + error);
+    alert('Something went wrong.Try again!');
+    console.log(error);
   }
 };
 
-export const getMovieSearch = async (query, page = 1) => {
+export const getMovieSearch = async query => {
   try {
     const response = await axios.get(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
     );
-
+    if (response.data.results.length === 0) {
+      alert('There are no such movies');
+    }
     return response.data.results;
   } catch (error) {
-    console.error('getMoviesSearch error' + error);
+    alert('Something went wrong.Try again!');
+    console.log(error);
   }
 };
 
@@ -33,7 +37,8 @@ export const getMovieDetails = async id => {
     );
     return response.data;
   } catch (error) {
-    console.error('getMovieDetails error' + error);
+    alert('Something went wrong.Try again!');
+    console.log(error);
   }
 };
 
@@ -42,12 +47,10 @@ export const getMovieCredits = async movieId => {
     const response = await axios.get(
       `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
     );
-    if (response.data.cast.length === 0) {
-      alert('Oops...There are no casts');
-    }
     return response.data.cast;
   } catch (error) {
-    console.error('getMovieDetails error' + error);
+    alert('Something went wrong.Try again!');
+    console.log(error);
   }
 };
 
@@ -56,11 +59,9 @@ export const getMovieReviews = async movieId => {
     const response = await axios.get(
       `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}`
     );
-    if (response.data.results.length === 0) {
-      alert('Oops...There are no reviews');
-    }
     return response.data.results;
   } catch (error) {
-    console.error('getMovieDetails error' + error);
+    alert('Something went wrong.Try again!');
+    console.log(error);
   }
 };
