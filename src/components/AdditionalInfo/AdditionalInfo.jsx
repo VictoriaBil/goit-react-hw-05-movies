@@ -11,7 +11,7 @@ export const AdditionalInfo = () => {
         <li>
           <Link
             to={PageNames.cast}
-            state={{ from: location.state?.from } ?? '/'}
+            state={{ from: location.state?.from ?? '/' }}
           >
             Cast
           </Link>
@@ -19,7 +19,7 @@ export const AdditionalInfo = () => {
         <li>
           <Link
             to={PageNames.reviews}
-            state={{ from: location.state?.from } ?? '/'}
+            state={{ from: location.state?.from ?? '/' }}
           >
             Reviews
           </Link>

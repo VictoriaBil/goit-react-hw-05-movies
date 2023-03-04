@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Homepage/Homepage';
 import Movies from '../pages/Movies/Movies';
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
-
 import { CastList } from '../components/CastList/CastList';
 import { ReviewsList } from '../components/ReviewsList/ReviewsList';
 import { PageNames } from '../router/paths';
