@@ -1,32 +1,38 @@
-import { Link, useLocation, Outlet } from 'react-router-dom';
+import { useLocation, Outlet } from 'react-router-dom';
 import { PageNames } from '../../router/paths';
-import {} from '../AdditionalInfo/AdditionalInfo.styled';
+import {
+  Wrapper,
+  Title,
+  List,
+  Item,
+  Link,
+} from '../AdditionalInfo/AdditionalInfo.styled';
 
 export const AdditionalInfo = () => {
   const location = useLocation();
 
   return (
-    <div>
-      <h2>Additional information</h2>
-      <ul>
-        <li>
+    <Wrapper>
+      <Title>Additional information</Title>
+      <List>
+        <Item>
           <Link
             to={PageNames.cast}
             state={{ from: location.state?.from ?? '/' }}
           >
             Cast
           </Link>
-        </li>
-        <li>
+        </Item>
+        <Item>
           <Link
             to={PageNames.reviews}
             state={{ from: location.state?.from ?? '/' }}
           >
             Reviews
           </Link>
-        </li>
-      </ul>
+        </Item>
+      </List>
       <Outlet />
-    </div>
+    </Wrapper>
   );
 };

@@ -1,31 +1,43 @@
 import PropTypes from 'prop-types';
+import {
+  Container,
+  Title,
+  UserScore,
+  InfoBlock,
+  Overview,
+  OverviewInfo,
+  Genres,
+  GenresInfo,
+  ImgWrap,
+} from '../MovieInfo/MovieInfo.styled';
+import noPoster from '../../image/noposter.webp';
 
 export const MovieInfo = ({
   movieInfo: { poster_path, title, vote_average, genres, overview },
 }) => {
   return (
-    <div>
-      <div>
+    <Container>
+      <ImgWrap>
         <img
           src={
             poster_path !== null
               ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-              : 'noPoster'
+              : noPoster
           }
           alt={title}
         />
-      </div>
-      <div>
-        <title>{title}</title>
-        <span>
+      </ImgWrap>
+      <InfoBlock>
+        <Title>{title}</Title>
+        <UserScore>
           User Score: <p>{Math.round(vote_average * 10)}%</p>
-        </span>
-        <p>Overview</p>
-        <p>{overview}</p>
-        <p>Genres</p>
-        <p>{genres.map(genre => genre.name).join(' , ')}</p>
-      </div>
-    </div>
+        </UserScore>
+        <Overview>Overview</Overview>
+        <OverviewInfo>{overview}</OverviewInfo>
+        <Genres>Genres</Genres>
+        <GenresInfo>{genres.map(genre => genre.name).join(' , ')}</GenresInfo>
+      </InfoBlock>
+    </Container>
   );
 };
 

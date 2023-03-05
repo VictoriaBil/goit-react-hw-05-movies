@@ -1,10 +1,10 @@
 import { AdditionalInfo } from '../../components/AdditionalInfo/AdditionalInfo';
-import { Link } from 'react-router-dom';
 import { MovieInfo } from '../../components/MovieInfo/MovieInfo';
 import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { getMovieDetails } from '../../API/FetchApi';
 import { Loader } from '../../Loader/Loader';
+import { Link } from '../MovieDetails/MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();

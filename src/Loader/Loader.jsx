@@ -1,8 +1,9 @@
 import { RotatingLines } from 'react-loader-spinner';
+import { LoaderSpin } from '../Loader/Loader.styled';
 
 export const Loader = () => {
   return (
-    <div>
+    <LoaderSpin>
       <RotatingLines
         strokeColor="grey"
         strokeWidth="5"
@@ -10,6 +11,6 @@ export const Loader = () => {
         width="96"
         visible={true}
       />
-    </div>
+    </LoaderSpin>
   );
 };
