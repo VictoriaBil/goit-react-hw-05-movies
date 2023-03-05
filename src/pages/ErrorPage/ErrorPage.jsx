@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import PageError from '../../image/404-error.jpg.webp';
 import { PageNames } from '../../router/paths';
+import { Link } from '../ErrorPage/ErrorPage.styled';
 
 export const ErrorPage = () => {
   return (
-    (<div> 404 page not found</div>),
-    (<NavLink to={PageNames.homepage}>Go to Homepage</NavLink>)
+    (<div> PageError </div>),
+    (<Link to={PageNames.homepage}>Go to Homepage</Link>)
   );
 };
