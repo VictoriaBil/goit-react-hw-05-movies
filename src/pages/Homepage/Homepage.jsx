@@ -6,19 +6,29 @@ import { Loader } from '../../Loader/Loader';
 const Home = () => {
   const [trendingMovie, setTrendingMovie] = useState(null);
   const [onLoad, setOnLoad] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setOnLoad(true);
-    getMovieTrending().then(response => {
-      setTrendingMovie([...response]);
-      setOnLoad(false);
-    });
+    const fetchHomepage = async () => {
+      try {
+        setOnLoad(true);
+        const data = await getMovieTrending();
+        setTrendingMovie([...data]);
+        setOnLoad(false);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setOnLoad(false);
+      }
+    };
+    fetchHomepage();
   }, []);
 
   return (
     <div>
       {onLoad && <Loader />}
       {trendingMovie && <MoviesList movies={trendingMovie} />}
+      {error && <p>Something went wrong. Please, try again</p>}
     </div>
   );
 };

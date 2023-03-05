@@ -9,12 +9,22 @@ import { Link } from '../MovieDetails/MovieDetails.styled';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
+  const [error, setError] = useState(null);
+  const [onLoad, setOnLoad] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
-      const data = await getMovieDetails(movieId);
-      setMovieDetails(data);
+      try {
+        setOnLoad(true);
+        const data = await getMovieDetails(movieId);
+        setMovieDetails(data);
+        setOnLoad(false);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setOnLoad(false);
+      }
     };
     fetchMovieDetails();
   }, [movieId]);
@@ -28,8 +38,8 @@ const MovieDetails = () => {
           <AdditionalInfo backPath={location.state?.from ?? '/'} />
         </>
       )}
-
-      <Suspense fallback={<Loader />}>
+      {error && <p>Something went wrong. Please, try again</p>}
+      <Suspense fallback={onLoad && <Loader />}>
         <Outlet />
       </Suspense>
     </div>
